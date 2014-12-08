@@ -18,6 +18,9 @@ Usage:
 
 Todo:
 Add authing and config
+
 Add paste entire file
+
 Rewrite requests to use stdlib and remove requests package
+
 bundle for ST package manager and submit
