@@ -1,5 +1,5 @@
 import sublime, sublime_plugin
-import sublime-ixio.sublime-package.requests as requests
+from . import requests
 class IxioCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		for region in self.view.sel():
