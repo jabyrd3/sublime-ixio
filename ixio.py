@@ -32,12 +32,6 @@ class IxioCommand(sublime_plugin.TextCommand):
             print("ix.io post success: " + r.text)
 
 
-class DebugCommand(sublime_plugin.TextCommand):
-
-    def run(self, edit):
-        print("here we debug")
-
-
 class StatusCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):

@@ -1,5 +1,4 @@
 [
-    { "caption": "ix.io: post", "command": "ixio" },
-    { "caption": "ix.io: pastes", "command": "status" },
-    { "caption": "Debug ix.io", "command": "debug" }
+    { "caption": "ix.io: post", "commankd": "ixio" },
+    { "caption": "ix.io: pastes", "command": "status" }
 ]
