@@ -3,11 +3,13 @@ import sublime_plugin
 from . import html2text
 from . import requests
 import re
+import webbrowser
 
 SETTINGS_FILE = "ixio.sublime-settings"
 settings = None
 username = None
 password = None
+statusId = None
 
 
 class IxioCommand(sublime_plugin.TextCommand):
@@ -40,11 +42,31 @@ class StatusCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
         r = requests.get("http://ix.io/user/" + username)
+        content = html2text.html2text(r.text)
+        content += "\n NOTE: select a line and right-click to open that paste in a browser"
         newWindow = self.view.window().new_file()
         activeView = self.view.window().active_view()
+        global statusId
+        statusId = activeView.id()
         activeView.set_scratch(True)
         activeView.set_name("Your Pastes")
-        activeView.replace(edit=edit, r=sublime.Region(0, 0), text=html2text.html2text(r.text))
+        activeView.replace(edit=edit, r=sublime.Region(0, 0), text=content)
+        activeView.sel().clear()
+
+
+class DoubleClickCommand(sublime_plugin.TextCommand):
+
+    def run_(self, view, args):
+        if self.view.id() == statusId:
+            jumper = self.view.line(self.view.sel()[0])
+            jumper = self.view.substr(jumper)
+            if "[[r]]" in jumper and "[[h]]" in jumper:
+                goTo = jumper.partition(" ")[0]
+                webbrowser.open_new("http://ix.io/" + goTo)
+                print(goTo)
+            return
+        else:
+            return
 
 
 def plugin_loaded():
