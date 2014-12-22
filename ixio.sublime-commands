@@ -1,3 +1,4 @@
 [
-    { "caption": "Post to ix.io", "command": "ixio" }
+    { "caption": "Post to ix.io", "command": "ixio" },
+    { "caption": "Debug ix.io", "command": "debug" }
 ]
