@@ -16,12 +16,11 @@ class IxioCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
         for region in self.view.sel():
-            s = ""
-            if not region.empty():
-                s = self.view.substr(region)
-            else:
+            if region.empty():
                 s = self.view.substr(sublime.Region(0, self.view.size()))
-            if username == None:
+            else:
+                s = self.view.substr(region)
+            if username is None:
                 s = sublime.window
                 r = requests.post("http://ix.io", data={"f:1": s})
             else:
@@ -51,7 +50,7 @@ class StatusCommand(sublime_plugin.TextCommand):
 class DoubleClickCommand(sublime_plugin.TextCommand):
 
     def run_(self, view, args):
-        if self.view.id() == statusId:
+        if self.view.id() is statusId:
             jumper = self.view.line(self.view.sel()[0])
             jumper = self.view.substr(jumper)
             if "[[r]]" in jumper and "[[h]]" in jumper:
