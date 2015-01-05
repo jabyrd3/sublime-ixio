@@ -30,7 +30,6 @@ class IxioCommand(sublime_plugin.TextCommand):
 		#         re.search("(?P<url>https?://[^\s]+)", r.text).group("url"))
 		#     print("ix.io post success: " + r.text)
 
-
 class StatusCommand(sublime_plugin.TextCommand):
 
 	def run(self, edit):
