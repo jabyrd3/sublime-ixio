@@ -7,7 +7,6 @@ import re
 import webbrowser
 from .libs import html2text
 
-SETTINGS_FILE = "Preferences.sublime-settings"
 settings = None
 username = None
 password = None
@@ -83,6 +82,6 @@ def plugin_loaded():
     global settings
     global username
     global password
-    settings = sublime.load_settings(SETTINGS_FILE)
+    settings = sublime.load_settings()
     username = settings.get("ixioUn")
     password = settings.get("ixioPw")
