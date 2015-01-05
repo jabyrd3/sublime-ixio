@@ -54,7 +54,7 @@ class StatusCommand(sublime_plugin.TextCommand):
         html = r.read().decode()
         content = html2text.html2text(html)
         content += "\n NOTE: select a line and right-click to open that paste in a browser"
-        #newWindow = self.view.window().new_file()
+        self.view.window().new_file()
         activeView = self.view.window().active_view()
         global statusId
         statusId = activeView.id()
