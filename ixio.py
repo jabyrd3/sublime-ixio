@@ -39,7 +39,7 @@ class IxioCommand(sublime_plugin.TextCommand):
                 req.add_header("Authorization", "Basic %s" % auth)
                 print(req.get_header("Authorization"))
                 response = urllib.request.urlopen(req)
-                page = response.read().decode('utf8')
+                r = response.read().decode('utf8')
                 print(page)
             sublime.set_clipboard(
                 re.search("(?P<url>https?://[^\s]+)", r.text).group("url"))
