@@ -5,7 +5,7 @@ from . import requests
 import re
 import webbrowser
 
-SETTINGS_FILE = "ixio.sublime-settings"
+SETTINGS_FILE = "Preferences.sublime-settings"
 settings = None
 username = None
 password = None
