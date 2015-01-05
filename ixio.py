@@ -36,8 +36,7 @@ class StatusCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		print(username)
 		r = urllib.request.urlopen("http://ix.io/user/" + username)
-		html = r.read();
-		print(html)
+		html = r.read().decode()
 		content = html2text.html2text(html)
 		content += "\n NOTE: select a line and right-click to open that paste in a browser"
 		newWindow = self.view.window().new_file()
