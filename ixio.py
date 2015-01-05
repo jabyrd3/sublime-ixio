@@ -26,7 +26,7 @@ class IxioCommand(sublime_plugin.TextCommand):
 				data = urllib.parse.urlencode({"fi:1":s}).encode('utf8')
 				req = urllib.request.Request(url, data=data, headers={'content-type', 'application/x-www-form-urlencoded'})
 				response = urllib.request.urlopen(req)
-				page = response.read().decode()
+				page = response.read().decode('utf8')
 				print(page)
 				print("test")
 			else:
@@ -35,7 +35,6 @@ class IxioCommand(sublime_plugin.TextCommand):
 				   #"http://ix.io", auth=(username, password), data={"f:1": s})
 			# sublime.set_clipboard(
 			#     re.search("(?P<url>https?://[^\s]+)", r.text).group("url"))
-			print("ix.io post success: " + r.text)
 
 class StatusCommand(sublime_plugin.TextCommand):
 
