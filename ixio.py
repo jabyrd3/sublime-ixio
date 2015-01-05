@@ -3,7 +3,7 @@ import sublime_plugin
 import urllib.request
 import re
 import webbrowser
-import libs.html2text
+from .libs import html2text
 
 SETTINGS_FILE = "Preferences.sublime-settings"
 settings = None
