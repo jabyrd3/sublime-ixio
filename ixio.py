@@ -22,7 +22,9 @@ class IxioCommand(sublime_plugin.TextCommand):
 				s = self.view.substr(region)
 			if username is None:
 				#r = requests.post("http://ix.io", data={"f:1": s})
+				print("test")
 			else:
+				print("test")
 				#r = requests.post(
 				   #"http://ix.io", auth=(username, password), data={"f:1": s})
 			# sublime.set_clipboard(
