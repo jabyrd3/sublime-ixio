@@ -1,7 +1,7 @@
 import sublime
 import sublime_plugin
-from . import html2text
-from . import requests
+import html2text
+import urllib.request
 import re
 import webbrowser
 
@@ -15,26 +15,26 @@ statusId = None
 class IxioCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
-        for region in self.view.sel():
-            if region.empty():
-                s = self.view.substr(sublime.Region(0, self.view.size()))
-            else:
-                s = self.view.substr(region)
-            if username is None:
-                r = requests.post("http://ix.io", data={"f:1": s})
-            else:
-                r = requests.post(
-                    "http://ix.io", auth=(username, password), data={"f:1": s})
-            sublime.set_clipboard(
-                re.search("(?P<url>https?://[^\s]+)", r.text).group("url"))
-            print("ix.io post success: " + r.text)
+        # for region in self.view.sel():
+        #     if region.empty():
+        #         s = self.view.substr(sublime.Region(0, self.view.size()))
+        #     else:
+        #         s = self.view.substr(region)
+        #     if username is None:
+        #         r = requests.post("http://ix.io", data={"f:1": s})
+        #     else:
+        #         r = requests.post(
+        #             "http://ix.io", auth=(username, password), data={"f:1": s})
+        #     sublime.set_clipboard(
+        #         re.search("(?P<url>https?://[^\s]+)", r.text).group("url"))
+        #     print("ix.io post success: " + r.text)
 
 
 class StatusCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
-        r = requests.get("http://ix.io/user/" + username)
-        content = html2text.html2text(r.text)
+        r = urllib.request.urlopen("http://ix.io/user/" + username)
+        content = html2text.html2text(r.read())
         content += "\n NOTE: select a line and right-click to open that paste in a browser"
         newWindow = self.view.window().new_file()
         activeView = self.view.window().active_view()
