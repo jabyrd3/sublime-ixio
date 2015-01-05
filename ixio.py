@@ -1,9 +1,9 @@
 import sublime
 import sublime_plugin
-import html2text
 import urllib.request
 import re
 import webbrowser
+from libs import html2text
 
 SETTINGS_FILE = "Preferences.sublime-settings"
 settings = None
