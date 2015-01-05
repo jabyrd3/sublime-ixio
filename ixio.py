@@ -23,10 +23,10 @@ class IxioCommand(sublime_plugin.TextCommand):
 				s = self.view.substr(region)
 			if username is None:
 				url = "http://ix.io"
-				data = urllib.parse.urlencode({"fi:1":s})
-				req = urllib.request.Request(url, data)
+				data = urllib.parse.urlencode({"fi:1":s}).encode('utf8')
+				req = urllib.request.Request(url, data=data, headers={'content-type', 'application/x-www-form-urlencoded'})
 				response = urllib.request.urlopen(req)
-				page = response.read()
+				page = response.read().decode()
 				print(page)
 				print("test")
 			else:
