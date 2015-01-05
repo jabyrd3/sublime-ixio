@@ -1,4 +1,5 @@
 import sublime
+import base64
 import sublime_plugin
 import urllib.parse
 import urllib.request
@@ -42,7 +43,7 @@ class IxioCommand(sublime_plugin.TextCommand):
                 r = response.read().decode('utf8')
                 print('user', r)
             sublime.set_clipboard(
-                re.search("(?P<url>https?://[^\s]+)", r.text).group("url"))
+                re.search("(?P<url>https?://[^\s]+)", r).group("url"))
 
 
 class StatusCommand(sublime_plugin.TextCommand):
@@ -53,7 +54,7 @@ class StatusCommand(sublime_plugin.TextCommand):
         html = r.read().decode()
         content = html2text.html2text(html)
         content += "\n NOTE: select a line and right-click to open that paste in a browser"
-        newWindow = self.view.window().new_file()
+        #newWindow = self.view.window().new_file()
         activeView = self.view.window().active_view()
         global statusId
         statusId = activeView.id()
