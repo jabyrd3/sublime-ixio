@@ -21,7 +21,6 @@ class IxioCommand(sublime_plugin.TextCommand):
             else:
                 s = self.view.substr(region)
             if username is None:
-                s = sublime.window
                 r = requests.post("http://ix.io", data={"f:1": s})
             else:
                 r = requests.post(
