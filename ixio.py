@@ -15,6 +15,7 @@ statusId = None
 class IxioCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
+    	print("testing")
         # for region in self.view.sel():
         #     if region.empty():
         #         s = self.view.substr(sublime.Region(0, self.view.size()))
