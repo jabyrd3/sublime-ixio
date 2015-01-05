@@ -33,10 +33,12 @@ class IxioCommand(sublime_plugin.TextCommand):
 
 class StatusCommand(sublime_plugin.TextCommand):
 
-	def run(self, edit):
+	def run(self, edit):k
 		print(username)
 		r = urllib.request.urlopen("http://ix.io/user/" + username)
-		content = html2text.html2text(r.read())
+		html = r.read();
+		print(html)
+		content = html2text.html2text(html)
 		content += "\n NOTE: select a line and right-click to open that paste in a browser"
 		newWindow = self.view.window().new_file()
 		activeView = self.view.window().active_view()
