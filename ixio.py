@@ -29,7 +29,7 @@ class IxioCommand(sublime_plugin.TextCommand):
                     url, data=data, headers={'content-type': 'application/x-www-form-urlencoded'})
                 response = urllib.request.urlopen(req)
                 r = response.read().decode('utf8')
-                print(page)
+                print('anon', r)
             else:
                 encode = username + ":" + password
                 encode = bytes(encode)
@@ -40,7 +40,7 @@ class IxioCommand(sublime_plugin.TextCommand):
                 print(req.get_header("Authorization"))
                 response = urllib.request.urlopen(req)
                 r = response.read().decode('utf8')
-                print(page)
+                print('user', r)
             sublime.set_clipboard(
                 re.search("(?P<url>https?://[^\s]+)", r.text).group("url"))
 
