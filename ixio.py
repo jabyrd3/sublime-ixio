@@ -15,20 +15,19 @@ statusId = None
 class IxioCommand(sublime_plugin.TextCommand):
 
 	def run(self, edit):
-		print("testing")
-		# for region in self.view.sel():
-		#     if region.empty():
-		#         s = self.view.substr(sublime.Region(0, self.view.size()))
-		#     else:
-		#         s = self.view.substr(region)
-		#     if username is None:
-		#         r = requests.post("http://ix.io", data={"f:1": s})
-		#     else:
-		#         r = requests.post(
-		#             "http://ix.io", auth=(username, password), data={"f:1": s})
-		#     sublime.set_clipboard(
-		#         re.search("(?P<url>https?://[^\s]+)", r.text).group("url"))
-		#     print("ix.io post success: " + r.text)
+		for region in self.view.sel():
+			if region.empty():
+				s = self.view.substr(sublime.Region(0, self.view.size()))
+			else:
+				s = self.view.substr(region)
+			if username is None:
+				#r = requests.post("http://ix.io", data={"f:1": s})
+			else:
+				#r = requests.post(
+				   #"http://ix.io", auth=(username, password), data={"f:1": s})
+			# sublime.set_clipboard(
+			#     re.search("(?P<url>https?://[^\s]+)", r.text).group("url"))
+			print("ix.io post success: " + r.text)
 
 class StatusCommand(sublime_plugin.TextCommand):
 
