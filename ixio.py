@@ -23,12 +23,11 @@ class IxioCommand(sublime_plugin.TextCommand):
 				s = self.view.substr(region)
 			if username is None:
 				url = "http://ix.io"
-				data = urllib.parse.urlencode({"fi:1":s}).encode('utf8')
-				req = urllib.request.Request(url, data=data, headers={'content-type', 'application/x-www-form-urlencoded'})
+				data = urllib.parse.urlencode({"f:1": s}).encode('utf8')
+				req = urllib.request.Request(url, data=data, headers={'content-type': 'application/x-www-form-urlencoded'})
 				response = urllib.request.urlopen(req)
 				page = response.read().decode('utf8')
-				print(page)
-				print("test")
+				print(page)			
 			else:
 				print("test")
 				#r = requests.post(
