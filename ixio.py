@@ -33,7 +33,7 @@ class IxioCommand(sublime_plugin.TextCommand):
                 print('anon', r)
             else:
                 encode = username + ":" + password
-                encode = bytes(encode)
+                encode = bytes(encode, 'utf-8')
                 auth = base64.b64encode(encode).decode('ascii')
                 req = urllib.request.Request(
                     url, data=data, headers={'content-type': 'application/x-www-form-urlencoded'})
