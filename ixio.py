@@ -82,6 +82,6 @@ def plugin_loaded():
     global settings
     global username
     global password
-    settings = sublime.load_settings()
+    settings = window.active_view.settings()
     username = settings.get("ixioUn")
     password = settings.get("ixioPw")
