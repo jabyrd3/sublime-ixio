@@ -1,5 +1,6 @@
 import sublime
 import sublime_plugin
+import urllib.parse
 import urllib.request
 import re
 import webbrowser
@@ -21,7 +22,12 @@ class IxioCommand(sublime_plugin.TextCommand):
 			else:
 				s = self.view.substr(region)
 			if username is None:
-				#r = requests.post("http://ix.io", data={"f:1": s})
+				url = "http://ix.io"
+				data = urllib.parse.urlencode({"fi:1":s})
+				req = urllib.request.Request(url, data)
+				response = urllib.request.urlopen(req)
+				page = response.read()
+				print(page)
 				print("test")
 			else:
 				print("test")
