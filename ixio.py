@@ -33,7 +33,7 @@ class IxioCommand(sublime_plugin.TextCommand):
 
 class StatusCommand(sublime_plugin.TextCommand):
 
-	def run(self, edit):k
+	def run(self, edit):
 		print(username)
 		r = urllib.request.urlopen("http://ix.io/user/" + username)
 		html = r.read();
