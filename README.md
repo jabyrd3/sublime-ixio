@@ -5,9 +5,9 @@ Sublime Text 3 plugin to post to ix.io, as well as view any previous posts.
 
 Usage: 
 
-1. In package preferences click ixio > Settings - Default and enter your ixio credentials. If you don't have ixio credentials just make something up. A new account will be created. Probably you shouldn't use a password that you use anywhere else as it's stored in plaintext in the config and ix.io uses basic HTTP auth.
+1. Enter ixio credentials as ixioUn and ixioPw in your user settings. (preferences > settings - user) If you don't have ixio credentials just make something up. A new account will be created for your first paste. Probably you shouldn't use a password that you use anywhere else as it's stored in plaintext in the config and ix.io uses basic HTTP auth. I would suggest you use a random string for both.
 
-2. Select the text you want post to ix.io if you want to paste selection. If you want to paste the entire file make sure the file you want to paste is the currently active buffer.
+2. Select the text you want post to ix.io if you want to paste a selection. If you want to paste the entire file make sure the file you want to paste is the currently active buffer.
 
 3. Press Shift+Ctrl+P (Shift+Cmd+P in OSX) to open the command pallete
 
