@@ -42,8 +42,9 @@ class IxioCommand(sublime_plugin.TextCommand):
                 response = urllib.request.urlopen(req)
                 r = response.read().decode('utf8')
                 print('user', r)
-            sublime.set_clipboard(
-                re.search("(?P<url>https?://[^\s]+)", r).group("url"))
+                if "bad token" not in r:
+                    sublime.set_clipboard(
+                        re.search("(?P<url>https?://[^\s]+)", r).group("url"))
 
 
 class StatusCommand(sublime_plugin.TextCommand):
