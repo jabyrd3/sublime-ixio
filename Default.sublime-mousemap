@@ -1,4 +1,4 @@
 [{
-  "button": "button2","count": "2",
-  "press_command": "double_click"
+  "button": "button3","count": "1",
+  "press_command": "middle_click"
 }]

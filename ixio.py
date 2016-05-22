@@ -42,32 +42,34 @@ class IxioCommand(sublime_plugin.TextCommand):
                 response = urllib.request.urlopen(req)
                 r = response.read().decode('utf8')
                 print('user', r)
-                if "bad token" not in r:
-                    sublime.set_clipboard(
-                        re.search("(?P<url>https?://[^\s]+)", r).group("url"))
+            sublime.set_clipboard(
+                re.search("(?P<url>https?://[^\s]+)", r).group("url"))
 
 
 class StatusCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
-        print(username)
+        content = "NOTE: select a line and middle-click to open that paste in a browser\n"
         r = urllib.request.urlopen("http://ix.io/user/" + username)
         html = r.read().decode()
-        content = html2text.html2text(html)
-        content += "\n NOTE: select a line and right-click to open that paste in a browser"
+        content += html2text.html2text(html)
         self.view.window().new_file()
         activeView = self.view.window().active_view()
         global statusId
         statusId = activeView.id()
         activeView.set_scratch(True)
         activeView.set_name("Your Pastes")
-        activeView.replace(edit=edit, r=sublime.Region(0, 0), text=content)
+        activeView.insert(edit, 0, content)
+        # activeView.run_command("insert", {"characters": content})
         activeView.sel().clear()
 
 
-class DoubleClickCommand(sublime_plugin.TextCommand):
+class MiddleClickCommand(sublime_plugin.TextCommand):
 
     def run_(self, view, args):
+        print("hey middle click listener worked")
+        print(self.view.id())
+        print(statusId)
         if self.view.id() is statusId:
             jumper = self.view.line(self.view.sel()[0])
             jumper = self.view.substr(jumper)
